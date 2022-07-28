@@ -3,14 +3,16 @@ package com.example.toolstalk
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.toolstalk.demos.Board
+import androidx.compose.ui.unit.dp
+import com.example.toolstalk.model.BoardState
 import com.example.toolstalk.model.sampleBoard1
+import com.example.toolstalk.ui.Board
+import com.example.toolstalk.ui.Keyboard
 import com.example.toolstalk.ui.theme.ToolsTalkTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GameScreen()
+                    GameScreen(sampleBoard1)
                 }
             }
         }
@@ -31,14 +33,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GameScreen() {
-    Board(boardState = sampleBoard1)
-}
+fun GameScreen(boardState: BoardState, modifier: Modifier = Modifier) {
+    Surface {
+        Column(
+            modifier = modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            Board(
+                boardState = boardState,
+                modifier = Modifier.weight(1f)
+            )
+            Keyboard(
+                modifier = Modifier.fillMaxWidth().height(200.dp)
+            )
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ToolsTalkTheme {
-        GameScreen()
     }
 }

@@ -1,6 +1,8 @@
-package com.example.toolstalk.demos
+package com.example.toolstalk.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -11,7 +13,11 @@ import com.example.toolstalk.model.*
 
 @Composable
 fun Board(modifier: Modifier = Modifier, boardState: BoardState) {
-    Column(modifier = modifier.padding(20.dp)) {
+    Column(
+        modifier = modifier
+            .fillMaxHeight()
+            .padding(20.dp)
+    ) {
         boardState.rowStates.forEach { rowState ->
             WordRow(rowState)
         }

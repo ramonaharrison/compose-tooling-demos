@@ -1,4 +1,4 @@
-package com.example.toolstalk.demos
+package com.example.toolstalk.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
