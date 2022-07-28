@@ -6,10 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.toolstalk.demos.Board
+import com.example.toolstalk.model.sampleBoard1
 import com.example.toolstalk.ui.theme.ToolsTalkTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    GameScreen()
                 }
             }
         }
@@ -30,14 +31,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun GameScreen() {
+    Board(boardState = sampleBoard1)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ToolsTalkTheme {
-        Greeting("Android")
+        GameScreen()
     }
 }
