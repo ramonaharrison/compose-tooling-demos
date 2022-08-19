@@ -1,6 +1,7 @@
 package com.example.toolstalk.model
 
 import androidx.compose.ui.graphics.Color
+import com.example.toolstalk.ui.Letter
 import com.example.toolstalk.ui.theme.*
 
 data class BoardState(
@@ -26,3 +27,8 @@ enum class AnswerState(
     KINDA(White, Yellow),
     CORRECT(White, Green)
 }
+
+data class KeyboardState(
+    val keys: Map<Letter, AnswerState> =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ".associate { Letter(it.toString()) to AnswerState.PENDING }
+)

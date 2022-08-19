@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.toolstalk.model.BoardState
+import com.example.toolstalk.model.KeyboardState
 import com.example.toolstalk.model.sampleBoard1
 import com.example.toolstalk.ui.Board
 import com.example.toolstalk.ui.Keyboard
@@ -45,7 +46,8 @@ fun GameScreen(boardState: BoardState, modifier: Modifier = Modifier) {
                 modifier = Modifier.weight(1f)
             )
             Keyboard(
-                modifier = Modifier.fillMaxWidth().height(200.dp)
+                modifier = Modifier.fillMaxWidth().height(200.dp),
+                keyboardState = KeyboardState()
             )
         }
 

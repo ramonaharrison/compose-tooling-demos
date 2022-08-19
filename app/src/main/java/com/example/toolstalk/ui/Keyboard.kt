@@ -2,10 +2,7 @@ package com.example.toolstalk.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,13 +12,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.toolstalk.model.AnswerState
+import com.example.toolstalk.model.KeyboardState
 
 @Composable
 fun Keyboard(
-    keyboardState: Map<Letter, AnswerState>,
+    keyboardState: KeyboardState,
     modifier: Modifier = Modifier,
 ) {
     Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
         Row {
@@ -66,6 +65,7 @@ fun Key(
     Box(
         modifier = modifier
             .padding(2.dp)
+            .defaultMinSize(minWidth = 30.dp)
             .background(color = color)
             .clickable { onClick(symbol) }
             .padding(8.dp),
@@ -81,7 +81,7 @@ fun Key(
             }
             is Enter -> {
                 Text(
-                    text = "Enter",
+                    text = "ENTER",
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 16.sp,
                 )

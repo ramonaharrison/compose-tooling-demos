@@ -11,6 +11,8 @@ val sampleTile3 = TileState("C", AnswerState.WRONG)
 val sampleTile4 = TileState("D", AnswerState.PENDING)
 val sampleTile5 = TileState(null, AnswerState.PENDING)
 
+val sampleKeyboardState = KeyboardState()
+
 fun List<String>.toBoardState(solution: String): BoardState {
     val rows = mutableListOf<RowState>()
     for (y in 0..5) {
