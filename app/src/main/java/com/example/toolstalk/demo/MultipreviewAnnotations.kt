@@ -1,4 +1,4 @@
-package com.example.toolstalk.preview
+package com.example.toolstalk.demo
 
 import android.content.res.Configuration.*
 import androidx.compose.runtime.Composable

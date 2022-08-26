@@ -3,6 +3,7 @@ package com.example.toolstalk.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import com.example.toolstalk.model.TileState
 import com.example.toolstalk.model.sampleTile1
+import com.example.toolstalk.model.sampleTile2
+import com.example.toolstalk.model.sampleTile3
 
 @Composable
 fun Tile(
@@ -30,6 +33,24 @@ fun Tile(
         showBorder = tileState.answerState.showBorder,
         modifier = modifier
     )
+}
+
+@Preview(name = "Correct Placement")
+@Composable
+fun TilePreview() {
+    Tile(tileState = sampleTile1)
+}
+
+@Preview(name = "Wrong Placement")
+@Composable
+fun TilePreview2() {
+    Tile(tileState = sampleTile2)
+}
+
+@Preview(name = "Not in solution")
+@Composable
+fun TilePreview3() {
+    Tile(tileState = sampleTile3)
 }
 
 @Composable
@@ -55,13 +76,5 @@ fun TileContents(
             fontWeight = FontWeight.ExtraBold,
             fontSize = LocalDensity.current.run { fontSize.toSp() }
         )
-    }
-}
-
-@Preview
-@Composable
-fun TilePreview() {
-    Surface {
-        Tile(tileState = sampleTile1)
     }
 }

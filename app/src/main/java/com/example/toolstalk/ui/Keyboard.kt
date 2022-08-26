@@ -9,10 +9,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.toolstalk.model.AnswerState
 import com.example.toolstalk.model.KeyboardState
+import com.example.toolstalk.model.sampleKeyboardState
 
 @Composable
 fun Keyboard(
@@ -103,3 +105,9 @@ sealed class Symbol
 data class Letter(val value: String) : Symbol()
 object Enter : Symbol()
 object Backspace : Symbol()
+
+@Preview
+@Composable
+fun KeyboardPreview() {
+    Keyboard(keyboardState = sampleKeyboardState)
+}
