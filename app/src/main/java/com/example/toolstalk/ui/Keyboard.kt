@@ -13,7 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.toolstalk.model.AnswerState
 import com.example.toolstalk.model.KeyboardState
 import com.example.toolstalk.model.sampleKeyboardState
 
@@ -21,6 +20,7 @@ import com.example.toolstalk.model.sampleKeyboardState
 fun Keyboard(
     keyboardState: KeyboardState,
     modifier: Modifier = Modifier,
+    onKeyClick: (Symbol) -> Unit = {},
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -30,6 +30,7 @@ fun Keyboard(
             "QWERTYUIOP".forEach {
                 Key(
                     symbol = Letter(it.toString()),
+                    onClick = onKeyClick
                 )
             }
         }
@@ -37,6 +38,7 @@ fun Keyboard(
             "ASDFGHJKL".forEach {
                 Key(
                     symbol = Letter(it.toString()),
+                    onClick = onKeyClick
                 )
             }
         }
@@ -48,6 +50,7 @@ fun Keyboard(
             "ZXCVBNM".forEach {
                 Key(
                     symbol = Letter(it.toString()),
+                    onClick = onKeyClick
                 )
             }
             Key(

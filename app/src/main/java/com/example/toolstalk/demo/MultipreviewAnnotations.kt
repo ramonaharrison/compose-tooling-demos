@@ -3,8 +3,8 @@ package com.example.toolstalk.demo
 import android.content.res.Configuration.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.toolstalk.GameScreen
 import com.example.toolstalk.model.sampleBoard1
+import com.example.toolstalk.ui.Board
 import com.example.toolstalk.ui.theme.ToolsTalkTheme
 
 @Preview(
@@ -48,6 +48,6 @@ annotation class CombinedPreviews
 @Composable
 fun DefaultPreview() {
     ToolsTalkTheme {
-        GameScreen(sampleBoard1)
+        Board(boardState = sampleBoard1)
     }
 }
