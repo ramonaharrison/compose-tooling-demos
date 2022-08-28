@@ -45,7 +45,8 @@ fun Keyboard(
         Row {
             Key(
                 symbol = Enter,
-                modifier = Modifier.weight(2f)
+                modifier = Modifier.weight(2f),
+                onClick = onKeyClick
             )
             "ZXCVBNM".forEach {
                 Key(
@@ -55,7 +56,8 @@ fun Keyboard(
             }
             Key(
                 symbol = Backspace,
-                modifier = Modifier.weight(2f)
+                modifier = Modifier.weight(2f),
+                onClick = onKeyClick
             )
         }
     }
