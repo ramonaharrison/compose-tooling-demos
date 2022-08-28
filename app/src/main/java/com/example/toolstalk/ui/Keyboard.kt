@@ -3,6 +3,7 @@ package com.example.toolstalk.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -68,7 +69,7 @@ fun Key(
         modifier = modifier
             .padding(2.dp)
             .defaultMinSize(minWidth = 30.dp)
-            .background(color = color)
+            .background(color = color, shape = RoundedCornerShape(3.dp))
             .clickable { onClick(symbol) }
             .padding(8.dp),
         contentAlignment = Alignment.Center
@@ -83,7 +84,7 @@ fun Key(
             }
             is Enter -> {
                 Text(
-                    text = "ENTER",
+                    text = "Enter",
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 16.sp,
                 )

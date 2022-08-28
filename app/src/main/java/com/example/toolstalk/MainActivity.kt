@@ -46,7 +46,7 @@ fun GameScreen(boardState: BoardState, modifier: Modifier = Modifier) {
                 .fillMaxHeight()
         ) {
             Text(
-                text = stringResource(R.string.app_name).uppercase(),
+                text = "WORDTOOL",
                 textAlign = TextAlign.Center,
                 style = Typography.headlineLarge,
                 modifier = Modifier.fillMaxWidth().padding(top = 20.dp)
