@@ -1,6 +1,8 @@
 package com.example.toolstalk.demo
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,22 +23,31 @@ fun AnimatingRow(
     rowState: RowState,
     modifier: Modifier = Modifier,
 ) {
-
-    var currentState by remember { mutableStateOf(AnimatingRowState.Active) }
-    val transition = updateTransition(currentState, label = "Animating Row State")
-
-    val rotation by transition.animateFloat(label = "Rotation") { state ->
-        when (state) {
-            AnimatingRowState.Active -> 0f
-            AnimatingRowState.Submitted -> 90f
-        }
-    }
-
     var rotated by remember { mutableStateOf(false) }
+    val transition = updateTransition(rotated, label = "Animating Row State")
 
-    Row(modifier = modifier.fillMaxWidth().clickable { rotated = !rotated }) {
+    Row(modifier = modifier
+        .fillMaxWidth()
+        .clickable {
+            rotated = !rotated
+        }) {
+
         Spacer(modifier = Modifier.weight(.5f))
-        rowState.tileStates.forEach { tileState ->
+
+        rowState.tileStates.forEachIndexed { index, tileState ->
+            val rotation by transition.animateFloat(
+                label = "Rotation",
+                transitionSpec = {
+                    tween(
+                        durationMillis = 500,
+                    )
+                }
+            ) { state ->
+                when (state) {
+                    false -> 0f
+                    true -> 90f
+                }
+            }
             AnimatingTile(
                 tileState = tileState,
                 rotation = rotation,
@@ -45,6 +56,7 @@ fun AnimatingRow(
                     .padding(2.dp)
             )
         }
+
         Spacer(modifier = Modifier.weight(.5f))
     }
 }
@@ -62,11 +74,6 @@ fun AnimatingTile(
             cameraDistance = 8 * density
         }
     )
-}
-
-enum class AnimatingRowState {
-    Active,
-    Submitted
 }
 
 @Preview
