@@ -9,7 +9,13 @@ data class BoardState(
 ) {
     val isSolved = rowStates.any { row -> row.isCorrectWord }
 
-    fun letterAtPosition(position: Position): String? = rowStates[position.y].tileStates[position.x].letter
+    fun letterAtPosition(position: Position): String? =
+        rowStates[position.y].tileStates[position.x].letter
+
+    fun wordAtPosition(position: Position): String =
+        rowStates[position.y].tileStates.joinToString(separator = "") { tileState ->
+            tileState.letter ?: ""
+        }
 }
 
 data class RowState(
