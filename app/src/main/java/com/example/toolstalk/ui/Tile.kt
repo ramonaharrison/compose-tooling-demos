@@ -3,9 +3,7 @@ package com.example.toolstalk.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,9 +15,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import com.example.toolstalk.model.TileState
-import com.example.toolstalk.model.sampleTile1
-import com.example.toolstalk.model.sampleTile2
-import com.example.toolstalk.model.sampleTile3
 
 @Composable
 fun Tile(
@@ -28,29 +23,14 @@ fun Tile(
 ) {
     TileContents(
         text = tileState.letter.orEmpty(),
-        backgroundColor = tileState.answerState.backgroundColor,
-        foregroundColor = tileState.answerState.foregroundColor,
-        showBorder = tileState.answerState.showBorder,
+        backgroundColor =
+        tileState.answerState.backgroundColor,
+        foregroundColor =
+        tileState.answerState.foregroundColor,
+        showBorder =
+        tileState.answerState.showBorder,
         modifier = modifier
     )
-}
-
-@Preview(name = "Correct Placement")
-@Composable
-fun TilePreview() {
-    Tile(tileState = sampleTile1)
-}
-
-@Preview(name = "Wrong Placement")
-@Composable
-fun TilePreview2() {
-    Tile(tileState = sampleTile2)
-}
-
-@Preview(name = "Not in solution")
-@Composable
-fun TilePreview3() {
-    Tile(tileState = sampleTile3)
 }
 
 @Composable
@@ -63,7 +43,14 @@ fun TileContents(
 ) {
     BoxWithConstraints(
         modifier = modifier
-            .then(if (showBorder) Modifier.border(width = 1.dp, color = Color.Gray) else Modifier)
+            .then(
+                if (showBorder)
+                    Modifier.border(
+                        width = 1.dp,
+                        color = Color.Gray
+                    )
+                else Modifier
+            )
             .background(backgroundColor)
             .aspectRatio(1f),
         contentAlignment = Alignment.Center
@@ -74,7 +61,15 @@ fun TileContents(
             text = text.uppercase(),
             color = foregroundColor,
             fontWeight = FontWeight.ExtraBold,
-            fontSize = LocalDensity.current.run { fontSize.toSp() }
+            fontSize = LocalDensity.current.run {
+                fontSize.toSp()
+            }
         )
     }
+}
+
+@Preview
+@Composable
+fun TilePreview() {
+    Tile(tileState = TileState(letter = "A"))
 }
