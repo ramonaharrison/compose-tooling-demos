@@ -10,7 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import com.example.toolstalk.model.*
+import com.example.toolstalk.model.BoardState
+import com.example.toolstalk.model.toBoardState
 
 @Composable
 fun Board(modifier: Modifier = Modifier, boardState: BoardState) {
@@ -25,11 +26,15 @@ fun Board(modifier: Modifier = Modifier, boardState: BoardState) {
     }
 }
 
-class BoardStatePreviewParameterProvider : PreviewParameterProvider<BoardState> {
+class BoardStatePreviewParameterProvider
+    : PreviewParameterProvider<BoardState> {
     override val values = sequenceOf(
-        listOf("BOAR", "", "", "", "", "").toBoardState("TOOLS"),
-        listOf("BOARD", "TOPIC", "TILES", "TOOL", "", "").toBoardState("TOOLS"),
-        listOf("BOARD", "TOPIC", "TILES", "TRIAL", "TOOLS", "").toBoardState("TOOLS"),
+        listOf("BOAR", "", "", "", "", "")
+            .toBoardState("TOOLS"),
+        listOf("BOARD", "TOPIC", "TILES", "TOOL", "", "")
+            .toBoardState("TOOLS"),
+        listOf("BOARD", "TOPIC", "TILES", "TRIAL", "TOOLS", "")
+            .toBoardState("TOOLS"),
     )
 }
 
