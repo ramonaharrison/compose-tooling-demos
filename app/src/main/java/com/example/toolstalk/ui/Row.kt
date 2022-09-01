@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.toolstalk.model.RowState
-import com.example.toolstalk.model.sampleRow1
+import com.example.toolstalk.model.sampleRow2
 
 @Composable
 fun WordRow(
@@ -35,6 +35,6 @@ fun WordRow(
 @Composable
 fun WordRowPreview() {
     Surface {
-        WordRow(rowState = sampleRow1)
+        WordRow(rowState = sampleRow2)
     }
 }
