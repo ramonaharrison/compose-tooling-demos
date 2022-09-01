@@ -16,7 +16,10 @@ import com.example.toolstalk.model.RowState
 import com.example.toolstalk.model.TileState
 
 @Composable
-fun Board(modifier: Modifier = Modifier, boardState: BoardState) {
+fun Board(
+    modifier: Modifier = Modifier,
+    boardState: BoardState
+) {
     Column(
         modifier = modifier
             .fillMaxHeight()
@@ -30,7 +33,7 @@ fun Board(modifier: Modifier = Modifier, boardState: BoardState) {
 
 class BoardStatePreviewParameterProvider
     : PreviewParameterProvider<BoardState> {
-    override val values = sequenceOf(
+    override val values = sequenceOf<BoardState>(
         listOf("BOAR", "", "", "", "", "")
             .toBoardState("TOOLS"),
         listOf("BOARD", "TOPIC", "TILES", "TOOL", "", "")
@@ -70,7 +73,8 @@ class BoardStatePreviewParameterProvider
 @Preview
 @Composable
 fun BoardPreview(
-    @PreviewParameter(BoardStatePreviewParameterProvider::class) boardState: BoardState,
+    @PreviewParameter(BoardStatePreviewParameterProvider::class)
+    boardState: BoardState,
 ) {
     Surface {
         Board(boardState = boardState)
