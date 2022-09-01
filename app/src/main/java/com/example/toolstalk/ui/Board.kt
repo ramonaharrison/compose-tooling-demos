@@ -10,8 +10,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import com.example.toolstalk.model.AnswerState
 import com.example.toolstalk.model.BoardState
-import com.example.toolstalk.model.toBoardState
+import com.example.toolstalk.model.RowState
+import com.example.toolstalk.model.TileState
 
 @Composable
 fun Board(modifier: Modifier = Modifier, boardState: BoardState) {
@@ -36,6 +38,33 @@ class BoardStatePreviewParameterProvider
         listOf("BOARD", "TOPIC", "TILES", "TRIAL", "TOOLS", "")
             .toBoardState("TOOLS"),
     )
+
+    private fun List<String>.toBoardState(solution: String): BoardState {
+        val rows = mutableListOf<RowState>()
+        for (y in 0..5) {
+            val tiles = mutableListOf<TileState>()
+            for (x in 0..4) {
+                val row = this.getOrNull(y)
+                val letter = row?.getOrNull(x)?.toString()
+                val tile = if (letter != null) {
+                    if (row.length < 5) {
+                        TileState(letter, AnswerState.PENDING)
+                    } else if (letter == solution[x].toString()) {
+                        TileState(letter, AnswerState.CORRECT)
+                    } else if (solution.contains(letter)) {
+                        TileState(letter, AnswerState.KINDA)
+                    } else {
+                        TileState(letter, AnswerState.WRONG)
+                    }
+                } else {
+                    TileState()
+                }
+                tiles.add(tile)
+            }
+            rows.add(RowState(tiles))
+        }
+        return BoardState(rows)
+    }
 }
 
 @Preview

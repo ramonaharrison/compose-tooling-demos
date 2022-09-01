@@ -1,10 +1,10 @@
 package com.example.toolstalk.demo
 
-import android.content.res.Configuration.*
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.toolstalk.model.sampleBoard1
-import com.example.toolstalk.ui.Board
+import com.example.toolstalk.model.sampleRow1
+import com.example.toolstalk.ui.WordRow
 import com.example.toolstalk.ui.theme.ToolsTalkTheme
 
 @Preview(
@@ -48,6 +48,6 @@ annotation class CombinedPreviews
 @Composable
 fun DefaultPreview() {
     ToolsTalkTheme {
-        Board(boardState = sampleBoard1)
+        WordRow(rowState = sampleRow1)
     }
 }
